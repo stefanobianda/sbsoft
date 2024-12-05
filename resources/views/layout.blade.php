@@ -8,6 +8,7 @@
     <title>Document</title>
 </head>
 <body>
+    <x-header />
     <main class="container mx-auto p-4 mt-4">
         @yield('content')
     </main>
