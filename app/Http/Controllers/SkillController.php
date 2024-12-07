@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -11,6 +12,7 @@ class SkillController extends Controller
     // @route GET /skills
     public function index(): View
     {
-        return view("skills.index");
+        $skills = Category::all();
+        return view("skills.index")->with("skills", $skills);
     }
 }
