@@ -12,7 +12,7 @@ class SkillController extends Controller
     // @route GET /skills
     public function index(): View
     {
-        $skills = Category::all();
-        return view("skills.index")->with("skills", $skills);
+        $skillCategories = Category::all();
+        return view("skills.index")->with("skillCategories", $skillCategories);
     }
 }
