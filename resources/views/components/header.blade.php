@@ -7,8 +7,28 @@
             <h3>By Stefano Bianda</h3>
         </div>
         <nav class="hidden md:flex items-center space-x-4">
-            <x-nav-link url='/projects' :active="request()->is('projects')">Projects</x-nav-link>
-            <x-nav-link url='/skilldashboard' :active="request()->is('skilldashboard')">Skills</x-nav-link>
+            <ul class="flex space-x-6">
+                <li>
+                    <x-nav-link url='/projects' :active="request()->is('projects')">Projects</x-nav-link>
+                </li>
+                @auth
+                <li class="relative group">
+                    <x-nav-link url='/skilldashboard' :active="request()->is('skilldashboard')">Dashboard</x-nav-link>
+                    <ul class="absolute hidden group-hover:block bg-blue-600 rounded shadow-lg mt-2">
+                        <li>
+                            <x-nav-link url='/skills' :active="request()->is('skills')">Skills</x-nav-link>
+                        </li>
+                        <li>
+                            <x-nav-link url='/categories' :active="request()->is('categories')">Categories</x-nav-link>
+                        </li>
+                    </ul>
+                </li>
+                @else
+                <li>
+                    <x-nav-link url='/skilldashboard' :active="request()->is('skilldashboard')">Skills</x-nav-link>
+                </li>
+                @endauth
+            </ul>
             @auth
             <x-logout-button />
             @else

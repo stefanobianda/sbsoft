@@ -12,7 +12,6 @@
     <p>{{$category->description}}</p>
 
     <a href="{{route('categories.edit',$category->id)}}">Edit {{$category->id}}</a>
-    <a href="{{route('categories.destroy',$category->id)}}">Delete {{$category->id}}</a>
 
     <form method="POST" action="{{route('categories.destroy', $category->id)}}" class="mt-10">
         @csrf
