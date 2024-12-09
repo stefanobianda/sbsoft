@@ -24,6 +24,7 @@ Route::get('/projects', [ProjectController::class,'index'])->name('projects.inde
 Route::get('/skilldashboard', [SkillDashboardController::class,'index'])->name('skilldashboard.index');
 
 Route::middleware('auth')->group(function () {
+    // Categories
     Route::get('/categories', [CategoryController::class,'index'])->name('categories.index');
     // CRUD
     Route::get('/categories/create', [CategoryController::class,'create'])->name('categories.create');
@@ -32,4 +33,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/categories/{category}/edit', [CategoryController::class,'edit'])->name('categories.edit');
     Route::put('/categories/{category}', [CategoryController::class,'update'])->name('categories.update');
     Route::delete('/categories/{category}', [CategoryController::class,'destroy'])->name('categories.destroy');
+
+    // Skills
+    Route::get('/skills', [SkillController::class,'index'])->name('skills.index');
+    // CRUD
+    Route::get('/skills/create', [SkillController::class,'create'])->name('skills.create');
+    Route::post('/skills', [SkillController::class,'store'])->name('skills.store');
+    Route::get('/skills/{skill}', [SkillController::class,'show'])->name('skills.show');
+    Route::get('/skills/{skill}/edit', [SkillController::class,'edit'])->name('skills.edit');
+    Route::put('/skills/{skill}', [SkillController::class,'update'])->name('skills.update');
+    Route::delete('/skills/{skill}', [SkillController::class,'destroy'])->name('skills.destroy');
 });
