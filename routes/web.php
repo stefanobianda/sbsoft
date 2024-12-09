@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\SkillController;
+use App\Http\Controllers\SkillDashboardController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class,'index'])->name('home');
@@ -20,7 +21,7 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/projects', [ProjectController::class,'index'])->name('projects.index');
 
 // Skills Section
-Route::get('/skills', [SkillController::class,'index'])->name('skills.index');
+Route::get('/skilldashboard', [SkillDashboardController::class,'index'])->name('skilldashboard.index');
 
 Route::middleware('auth')->group(function () {
     Route::get('/categories', [CategoryController::class,'index'])->name('categories.index');

@@ -8,7 +8,7 @@
         </div>
         <nav class="hidden md:flex items-center space-x-4">
             <x-nav-link url='/projects' :active="request()->is('projects')">Projects</x-nav-link>
-            <x-nav-link url='/skills' :active="request()->is('skills')">Skills</x-nav-link>
+            <x-nav-link url='/skilldashboard' :active="request()->is('skilldashboard')">Skills</x-nav-link>
             @auth
             <x-logout-button />
             @else
@@ -24,7 +24,7 @@
         id="mobile-menu"
         class="hidden md:hidden bg-blue-600 text-white mt-5 pb-4 space-y-2">
         <x-nav-link url='/projects' :active="request()->is('projects')" :mobile="true">Projects</x-nav-link>
-        <x-nav-link url='/skills' :active="request()->is('skills')" :mobile="true">Skills</x-nav-link>
+        <x-nav-link url='/skilldashboard' :active="request()->is('skilldashboard')" :mobile="true">Skills</x-nav-link>
         @auth
         <x-logout-button />
         @else
