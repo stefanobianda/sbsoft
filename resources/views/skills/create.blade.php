@@ -12,6 +12,8 @@
 
         <x-inputs.select id="category_id" name="category_id" label="Category" value="{{old('category_id')}}" :options="$categories" />
 
+        <x-inputs.file id="image" name="image" label="Skill image" />
+
         <button type="submit" class="w-full bg-green-500 hover:bg-green-600 text-white px-4 py-2 my-3 rounded focus:outline-none">Create</button>
     </form>
 </div>

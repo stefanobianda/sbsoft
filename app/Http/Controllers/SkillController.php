@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Skill;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
 class SkillController extends Controller
@@ -37,8 +38,7 @@ class SkillController extends Controller
     // @route GET /skills/{$id}/edit
     public function edit(Skill $skill): View
     {
-        return view("skills.edit")->with("skill", $skill)
-                                        ->with("categories", Category::all()->pluck("name","id"));
+        return view("skills.edit")->with("skill", $skill)->with("categories", Category::all()->pluck("name","id"));
     }
 
     // @desc Save the new category
@@ -48,8 +48,17 @@ class SkillController extends Controller
         $validatedData = $request->validate([
             "name"=> "required|string|max:20",
             "description"=> "nullable|string|max:100",
+            'image' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:512',
             'category_id' => 'required|exists:categories,id',
         ]);
+
+        // Check for image
+        if ($request->hasFile('image')) {
+            // Store the file
+            $path = $request->file('image')->store('skills', 'public');
+            // Add path to validated data
+            $validatedData['image'] = $path;
+        }
 
         $skill = Skill::create($validatedData);
 
@@ -63,8 +72,24 @@ class SkillController extends Controller
         $validatedData = $request->validate([
             "name"=> "required|string|max:20",
             "description"=> "nullable|string|max:100",
+            'image' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:512',
             'category_id' => 'required|exists:categories,id',
         ]);
+
+        // Check for image
+        if ($request->hasFile('image')) {
+            // Delete old logo
+            if ($skill->image) {
+                if (Storage::disk('public')->exists($skill->image)) {
+                    Storage::disk('public')->delete($skill->image);
+                }
+            }
+            
+            // Store the file
+            $path = $request->file('image')->store('skills', 'public');
+            // Add path to validated data
+            $validatedData['image'] = $path;
+        }
 
         $skill->update($validatedData);
 
