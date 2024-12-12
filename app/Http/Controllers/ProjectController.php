@@ -13,6 +13,6 @@ class ProjectController extends Controller
     public function index(): View
     {
         $projects = Project::all();
-        return view("projects.index");
+        return view("projects.index")->with("projects", $projects);
     }
 }
