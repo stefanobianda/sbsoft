@@ -1,10 +1,13 @@
 <header class="bg-blue-600 text-black p-4">
     <div class="container mx-auto flex justify-between items-center">
-        <div>
-            <h1 class="text-3xl font-semibold">
-                <a href="{{url('/')}}">SBSoft</a>
-            </h1>
-            <h3>By Stefano Bianda</h3>
+        <div class="flex items-center">
+            <img src="{{ asset('images/SBSoft_Logo.png') }}" alt="no image available" class="h-20 m-1">
+            <div class="mx-5">
+                <h1 class="text-3xl font-semibold">
+                    <a href="{{url('/')}}">SBSoft</a>
+                </h1>
+                <h3>By Stefano Bianda</h3>
+            </div>
         </div>
         <nav class="hidden md:flex items-center space-x-4">
             <ul class="flex space-x-6">

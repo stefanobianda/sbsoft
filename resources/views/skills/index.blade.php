@@ -1,11 +1,13 @@
 <x-layout>
-    <div>
-        <h1>Skills</h1>
+
+    <div class="bg-gray-200 p-4 my-4 flex grid grid-cols-1 md:grid-cols-4 gap-4 m-4 rounded-lg">
+        @forelse($skills as $skill)
+            <x-skill :skill="$skill" :list="true" />
+        @empty
+            <li>No skill available</li>
+        @endforelse
     </div>
-    @forelse($skillCategories as $category)
-        <x-category-skill :category="$category" :skills="$category->Skills" />
-    @empty
-        <li>No category available</li>
-    @endforelse
+
+    <x-button-link url="{{route('skills.create')}}">Add Skill</x-button-link>
 
 </x-layout>
