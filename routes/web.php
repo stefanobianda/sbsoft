@@ -17,10 +17,7 @@ Route::middleware('guest')->group(function () {
 
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-// Project Section
-Route::get('/projects', [ProjectController::class,'index'])->name('projects.index');
-
-// Skills Section
+// Dashboard Section
 Route::get('/skilldashboard', [SkillDashboardController::class,'index'])->name('skilldashboard.index');
 
 Route::middleware('auth')->group(function () {
@@ -43,4 +40,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/skills/{skill}/edit', [SkillController::class,'edit'])->name('skills.edit');
     Route::put('/skills/{skill}', [SkillController::class,'update'])->name('skills.update');
     Route::delete('/skills/{skill}', [SkillController::class,'destroy'])->name('skills.destroy');
+
+    // Projects
+    Route::get('/projects', [ProjectController::class,'index'])->name('projects.index');
+    // CRUD
+    Route::get('/projects/create', [ProjectController::class,'create'])->name('projects.create');
+    Route::post('/projects', [ProjectController::class,'store'])->name('projects.store');
+    Route::get('/projects/{project}', [ProjectController::class,'show'])->name('projects.show');
+    Route::get('/projects/{project}/edit', [ProjectController::class,'edit'])->name('projects.edit');
+    Route::put('/projects/{project}', [ProjectController::class,'update'])->name('projects.update');
+    Route::delete('/projects/{project}', [ProjectController::class,'destroy'])->name('projects.destroy');
+
 });
