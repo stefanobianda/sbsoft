@@ -1,6 +1,5 @@
 <?php
 
-use Carbon\Carbon;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -21,14 +20,6 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
-
-        // Insert automatic admin user
-        DB::table('users')->insert([
-            'name'=> env('APP_USERNAME'),
-            'email'=> env('APP_EMAIL'),
-            'password'=> bcrypt(env('APP_PASSWORD')),
-            'email_verified_at'=> Carbon::now(),
-            ]);
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
             $table->string('email')->primary();
