@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class Project extends Component
+class DeleteButton extends Component
 {
     /**
      * Create a new component instance.
@@ -21,6 +21,6 @@ class Project extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.project');
+        return view('components.delete-button');
     }
 }
