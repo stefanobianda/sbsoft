@@ -20,6 +20,10 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 // Dashboard Section
 Route::get('/skilldashboard', [SkillDashboardController::class,'index'])->name('skilldashboard.index');
 
+// Projects
+Route::get('/projects', [ProjectController::class,'index'])->name('projects.index');
+Route::get('/projects/{project}', [ProjectController::class,'show'])->name('projects.show');
+
 Route::middleware('auth')->group(function () {
     // Categories
     Route::get('/categories', [CategoryController::class,'index'])->name('categories.index');
@@ -42,11 +46,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/skills/{skill}', [SkillController::class,'destroy'])->name('skills.destroy');
 
     // Projects
-    Route::get('/projects', [ProjectController::class,'index'])->name('projects.index');
     // CRUD
     Route::get('/projects/create', [ProjectController::class,'create'])->name('projects.create');
     Route::post('/projects', [ProjectController::class,'store'])->name('projects.store');
-    Route::get('/projects/{project}', [ProjectController::class,'show'])->name('projects.show');
     Route::get('/projects/{project}/edit', [ProjectController::class,'edit'])->name('projects.edit');
     Route::put('/projects/{project}', [ProjectController::class,'update'])->name('projects.update');
     Route::delete('/projects/{project}', [ProjectController::class,'destroy'])->name('projects.destroy');

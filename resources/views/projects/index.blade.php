@@ -8,6 +8,8 @@
         @endforelse
     </div>
 
-    <x-button-link url="{{route('projects.create')}}">Add Project</x-button-link>
+    @auth
+        <x-button-link url="{{route('projects.create')}}">Add Project</x-button-link>
+    @endauth
 
 </x-layout>
