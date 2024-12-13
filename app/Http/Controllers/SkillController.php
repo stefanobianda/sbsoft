@@ -41,8 +41,8 @@ class SkillController extends Controller
         return view("skills.edit")->with("skill", $skill)->with("categories", Category::all()->pluck("name","id"));
     }
 
-    // @desc Save the new category
-    // @route POST /categories
+    // @desc Save the new skill
+    // @route POST /skills
     public function store(Request $request): RedirectResponse
     {
         $validatedData = $request->validate([
@@ -65,8 +65,8 @@ class SkillController extends Controller
         return redirect()->route("skills.index")->with("success","Skill created successfully!");
     }
 
-    // @desc Update the existing category
-    // @route PUT /categories/{$id}
+    // @desc Update the existing skill
+    // @route PUT /skills/{$id}
     public function update(Request $request, Skill $skill): RedirectResponse
     {
         $validatedData = $request->validate([
@@ -96,8 +96,8 @@ class SkillController extends Controller
         return redirect()->route("skills.index")->with("success","Skill updated successfully!");
     }
 
-    // @desc delete a category
-    // @route DELETE /categories/{$id}    
+    // @desc delete a skill
+    // @route DELETE /skills/{$id}    
     public function destroy(Skill $skill): RedirectResponse
     {
         $skill->delete();

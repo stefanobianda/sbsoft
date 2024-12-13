@@ -2,7 +2,10 @@
 
     <div class="bg-gray-200 p-4 my-4 flex grid grid-cols-1 md:grid-cols-4 gap-4 m-4 rounded-lg">
         @forelse($projects as $project)
-            <h1>Projects...</h1>
+        <a href="{{route('projects.show', $project->id)}}">
+        <h1>{{$project->name}}</h1>
+        <p>{{$project->shortDescription}}</p>
+        </a>
         @empty
             <li>No skill available</li>
         @endforelse
