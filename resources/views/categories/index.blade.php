@@ -9,4 +9,5 @@
     </div>
 
     <x-button-link url="{{route('categories.create')}}">Add Category</x-button-link>
+
 </x-layout>

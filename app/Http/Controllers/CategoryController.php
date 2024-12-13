@@ -66,7 +66,7 @@ class CategoryController extends Controller
 
         $category->update($validatedData);
 
-        return redirect()->route("categories.show")->with("success","Category updated successfully!");
+        return redirect()->route("categories.show", $category->id)->with("success","Category updated successfully!");
     }
 
     // @desc delete a category

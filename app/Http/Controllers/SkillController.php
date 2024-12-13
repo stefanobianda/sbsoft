@@ -93,7 +93,7 @@ class SkillController extends Controller
 
         $skill->update($validatedData);
 
-        return redirect()->route("skills.show")->with("success","Skill updated successfully!");
+        return redirect()->route("skills.show", $skill->id)->with("success","Skill updated successfully!");
     }
 
     // @desc delete a skill
