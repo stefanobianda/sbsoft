@@ -93,7 +93,7 @@ class SkillController extends Controller
 
         $skill->update($validatedData);
 
-        return redirect()->route("skills.index")->with("success","Skill updated successfully!");
+        return redirect()->route("skills.show")->with("success","Skill updated successfully!");
     }
 
     // @desc delete a skill
@@ -102,7 +102,7 @@ class SkillController extends Controller
     {
         $skill->delete();
 
-        return redirect()->route("skilldashboard.index")->with("success","Skill deleted successfully!");
+        return redirect()->route("skills.index")->with("success","Skill deleted successfully!");
     }
 
 }

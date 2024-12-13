@@ -52,7 +52,7 @@ class CategoryController extends Controller
 
         $category = Category::create($validatedData);
 
-        return redirect()->route("skilldashboard.index")->with("success","Category created successfully!");
+        return redirect()->route("categories.index")->with("success","Category created successfully!");
     }
 
     // @desc Update the existing category
@@ -66,7 +66,7 @@ class CategoryController extends Controller
 
         $category->update($validatedData);
 
-        return redirect()->route("skilldashboard.index")->with("success","Category updated successfully!");
+        return redirect()->route("categories.show")->with("success","Category updated successfully!");
     }
 
     // @desc delete a category
@@ -75,7 +75,7 @@ class CategoryController extends Controller
     {
         $category->delete();
 
-        return redirect()->route("skilldashboard.index")->with("success","Category deleted successfully!");
+        return redirect()->route("categories.index")->with("success","Category deleted successfully!");
     }
 
 }
