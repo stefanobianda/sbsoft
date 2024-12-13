@@ -1,8 +1,6 @@
 <x-layout>
 
-    <div class="bg-gray-200 p-4 my-4 flex grid grid-cols-1 md:grid-cols-4 gap-4 m-4 rounded-lg">
-            <h1>{{$project->name}}</h1>
-    </div>
+    <x-project :project="$project" />
 
     <x-button-link url="{{route('projects.edit', 1 )}}">Edit Project</x-button-link>
 
