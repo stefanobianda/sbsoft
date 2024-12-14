@@ -17,5 +17,15 @@ class DatabaseSeeder extends Seeder
         $this->call(CategoriesTableSeeder::class);
         $this->call(SkillsTableSeeder::class);
         $this->call(ProjectsTableSeeder::class);
+        $this->call(ProjectsSkillsTableSeeder::class);
     }
+
+    public static function addTimestemp(array &$items): void
+    {
+        foreach ($items as &$item) {
+            $item['created_at'] = now();
+            $item['updated_at'] = now();
+        }
+    }
+
 }

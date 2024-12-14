@@ -16,12 +16,14 @@ class CategoriesTableSeeder extends Seeder
     {
         // Clear the table before seeding
         Category::truncate();
-        //DB::table("categories")->truncate();
 
         // Load skill list from file
         $categories = include database_path('seeders/data/categories.php');
 
+        DatabaseSeeder::addTimestemp($categories);
+        
         // Insert automatic the main categories
         DB::table("categories")->insert($categories);
     }
+
 }

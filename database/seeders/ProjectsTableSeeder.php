@@ -16,7 +16,6 @@ class ProjectsTableSeeder extends Seeder
     {
         // Clear the table before seeding
         Project::truncate();
-        //DB::table("projects")->truncate();
 
         // Load skill list from file
         $projects = include database_path('seeders/data/projects.php');

@@ -20,13 +20,13 @@ class Project extends Model
         "image",
     ] ;
 
-    public function skills(): HasMany
-    {
-        return $this->hasMany(Activity::class);
-    }
-    public function linkedBySkills(): BelongsToMany
-    {
-        return $this->belongsToMany(Skill::class, 'projects_skills')->withTimestamps();
-    }
+    // public function skills(): HasMany
+    // {
+    //     return $this->hasMany(Activity::class);
+    // }
+    // public function linkedBySkills(): BelongsToMany
+    // {
+    //     return $this->belongsToMany(Skill::class, 'projects_skills')->withTimestamps();
+    // }
 
 }
