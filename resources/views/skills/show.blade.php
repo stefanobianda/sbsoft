@@ -12,6 +12,8 @@
         @endforeach
     </div>
 
-    <x-button-link url="{{route('skills.edit', $skill->id)}}">Manage projects</x-button-link>
+    @auth
+        <x-button-link url="{{route('skills.projects', $skill->id)}}">Manage Projects</x-button-link>
+    @endauth
 
 </x-layout>

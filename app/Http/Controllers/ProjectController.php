@@ -114,7 +114,8 @@ class ProjectController extends Controller
     // @route GET /projects/{$id}/skills
     public function skills(Project $project): View
     {
-        $skills = Skill::all();
+        $associatedSkillIds = $project->linkedBySkills()->pluck('skill_id')->toArray();
+        $skills = Skill::whereNotIn('id', $associatedSkillIds)->get();
         return view("projects.skills")->with("project", $project)->with("skills", $skills);
     }
 
@@ -125,8 +126,7 @@ class ProjectController extends Controller
         if (!$project->linkedBySkills()->where('skill_id', $skill->id)->exists()){
             $project->linkedBySkills()->attach($skill->id);
         }
-        $skills = Skill::all();
-        return view("projects.skills")->with("project", $project)->with("skills", $skills);
+        return $this->skills($project);
     }
 
     // @desc unlink skills
@@ -134,7 +134,6 @@ class ProjectController extends Controller
     public function removeSkill(Project $project, Skill $skill): View
     {
         $project->linkedBySkills()->detach($skill->id);
-        $skills = Skill::all();
-        return view("projects.skills")->with("project", $project)->with("skills", $skills);
+        return $this->skills($project);
     }
 }

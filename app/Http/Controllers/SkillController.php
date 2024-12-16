@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Project;
 use App\Models\Skill;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -103,6 +104,33 @@ class SkillController extends Controller
         $skill->delete();
 
         return redirect()->route("skills.index")->with("success","Skill deleted successfully!");
+    }
+
+    // @desc manage projects
+    // @route GET /skills/{$id}/projects
+    public function projects(Skill $skill): View
+    {
+        $associatedProjectIds = $skill->linkedByProjects()->pluck('project_id')->toArray();
+        $projects = Project::whereNotIn('id', $associatedProjectIds)->get();
+        return view("skills.projects")->with("skill", $skill)->with("projects", $projects);
+    }
+
+    // @desc link project
+    // @route GET /skills/{$id}/projects/{$id}/add
+    public function addProject(Skill $skill, Project $project): View
+    {
+        if (!$skill->linkedByProjects()->where('project_id', $project->id)->exists()){
+            $skill->linkedByProjects()->attach($project->id);
+        }
+        return $this->projects($skill);
+    }
+
+    // @desc unlink skills
+    // @route GET /projects/{$id}/skills/{$id}/remove
+    public function removeProject(Skill $skill, Project $project): View
+    {
+        $skill->linkedByProjects()->detach($project->id);
+        return $this->projects($skill);
     }
 
 }

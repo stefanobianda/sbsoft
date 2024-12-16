@@ -40,6 +40,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/skills/{skill}/edit', [SkillController::class,'edit'])->name('skills.edit');
     Route::put('/skills/{skill}', [SkillController::class,'update'])->name('skills.update');
     Route::delete('/skills/{skill}', [SkillController::class,'destroy'])->name('skills.destroy');
+    // Manage project
+    Route::get('/skills/{skill}/projects', [SkillController::class, 'projects'])->name('skills.projects');
+    Route::delete('/skills/{skill}/projects/{project}/remove', [SkillController::class, 'removeProject'])->name('skills.projects.remove');
+    Route::post('/skills/{skill}/projects/{project}/add', [SkillController::class, 'addProject'])->name('skills.projects.add');
 
     // Projects
     // CRUD
