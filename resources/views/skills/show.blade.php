@@ -1,14 +1,6 @@
 <x-layout>
 
-    <div class="bg-gray-300 items-center rounded-lg flex flex-col justify-center text-left p-4 mb-4">
-        <a href="{{route('skills.show', $skill->id)}}">
-            <h1 class="text-3xl font-bold mb-4">{{$skill->name}}</h1>
-            <div class="flex justify-center mb-4">
-            <img src="{{ $skill->image ? asset('storage/' . $skill->image) : asset('images/no-image-available.png') }}" alt="no image available" class="h-20 m-1">
-            </div>
-            <p>{{$skill->shortDescription}}</p>
-        </a>
-    </div>
+    <x-skill :skill=$skill list="edit" />
 
     <x-button-link url="{{route('skills.edit', $skill->id)}}">Edit Skill</x-button-link>
 
