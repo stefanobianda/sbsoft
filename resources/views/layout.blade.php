@@ -12,6 +12,13 @@
 <body>
     <x-header />
     <main class="container mx-auto p-4 mt-4">
+        {{-- Display alert messages --}}
+        @if(session('success'))
+        <x-alert type="success" message="{{session('success')}}" />
+        @endif
+        @if(session('error'))
+        <x-alert type="error" message="{{session('error')}}" />
+        @endif
         {{$slot}}
     </main>
     <script src="{{asset('js/script.js')}}"></script>
