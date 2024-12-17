@@ -117,20 +117,20 @@ class SkillController extends Controller
 
     // @desc link project
     // @route GET /skills/{$id}/projects/{$id}/add
-    public function addProject(Skill $skill, Project $project): View
+    public function addProject(Skill $skill, Project $project): RedirectResponse
     {
         if (!$skill->linkedByProjects()->where('project_id', $project->id)->exists()){
             $skill->linkedByProjects()->attach($project->id);
         }
-        return $this->projects($skill);
+        return redirect()->route("skills.projects", $skill->id)->with("success","Project linked to skill successfully!");
     }
 
     // @desc unlink skills
     // @route GET /projects/{$id}/skills/{$id}/remove
-    public function removeProject(Skill $skill, Project $project): View
+    public function removeProject(Skill $skill, Project $project): RedirectResponse
     {
         $skill->linkedByProjects()->detach($project->id);
-        return $this->projects($skill);
+        return redirect()->route("skills.projects", $skill->id)->with("success","Project removed from skill successfully!");
     }
 
 }
