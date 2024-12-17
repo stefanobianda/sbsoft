@@ -7,7 +7,7 @@
 
     <x-button-link url="{{route('categories.edit', $category->id)}}">Edit Category</x-button-link>
 
-    <x-form-button action="{{route('categories.destroy', $category->id)}}" text="Remove Category" />
+    <x-form-button action="{{route('categories.destroy', $category->id)}}" :delete="true" text="Remove Category" />
 
 </div>
 </x-layout>
