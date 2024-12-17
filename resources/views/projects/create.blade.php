@@ -22,5 +22,3 @@
         </form>
     </div>
 </x-layout>
-
-"company",

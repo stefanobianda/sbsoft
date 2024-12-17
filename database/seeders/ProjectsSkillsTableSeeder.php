@@ -2,12 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\Skill;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class SkillsTableSeeder extends Seeder
+class ProjectsSkillsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,12 +14,12 @@ class SkillsTableSeeder extends Seeder
     public function run(): void
     {
         // Clear the table before seeding
-        Skill::truncate();
+        DB::table("projects_skills")->truncate();
 
         // Load skill list from file
-        $skills = include database_path('seeders/data/skills.php');
+        $projectsSkills = include database_path('seeders/data/projects_skills.php');
 
         // Insert automatic the main skills
-        DB::table("skills")->insert($skills);
+        DB::table("projects_skills")->insert($projectsSkills);
     }
 }

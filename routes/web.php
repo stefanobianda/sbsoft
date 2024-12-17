@@ -20,10 +20,6 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 // Dashboard Section
 Route::get('/skilldashboard', [SkillDashboardController::class,'index'])->name('skilldashboard.index');
 
-// Projects
-Route::get('/projects', [ProjectController::class,'index'])->name('projects.index');
-Route::get('/projects/{project}', [ProjectController::class,'show'])->name('projects.show');
-
 Route::middleware('auth')->group(function () {
     // Categories
     Route::get('/categories', [CategoryController::class,'index'])->name('categories.index');
@@ -44,6 +40,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/skills/{skill}/edit', [SkillController::class,'edit'])->name('skills.edit');
     Route::put('/skills/{skill}', [SkillController::class,'update'])->name('skills.update');
     Route::delete('/skills/{skill}', [SkillController::class,'destroy'])->name('skills.destroy');
+    // Manage project
+    Route::get('/skills/{skill}/projects', [SkillController::class, 'projects'])->name('skills.projects');
+    Route::delete('/skills/{skill}/projects/{project}/remove', [SkillController::class, 'removeProject'])->name('skills.projects.remove');
+    Route::post('/skills/{skill}/projects/{project}/add', [SkillController::class, 'addProject'])->name('skills.projects.add');
 
     // Projects
     // CRUD
@@ -52,5 +52,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/projects/{project}/edit', [ProjectController::class,'edit'])->name('projects.edit');
     Route::put('/projects/{project}', [ProjectController::class,'update'])->name('projects.update');
     Route::delete('/projects/{project}', [ProjectController::class,'destroy'])->name('projects.destroy');
-
+    // Manage skill
+    Route::get('/projects/{project}/skills', [ProjectController::class, 'skills'])->name('projects.skills');
+    Route::delete('/projects/{project}/skills/{skill}/remove', [ProjectController::class, 'removeSkill'])->name('projects.skills.remove');
+    Route::post('/projects/{project}/skills/{skill}/add', [ProjectController::class, 'addSkill'])->name('projects.skills.add');
 });
+
+// Projects
+Route::get('/projects', [ProjectController::class,'index'])->name('projects.index');
+Route::get('/projects/{project}', [ProjectController::class,'show'])->name('projects.show');
+
