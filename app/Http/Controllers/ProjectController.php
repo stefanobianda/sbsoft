@@ -116,7 +116,7 @@ class ProjectController extends Controller
     {
         $associatedSkillIds = $project->linkedBySkills()->pluck('skill_id')->toArray();
         $skills = Skill::whereNotIn('id', $associatedSkillIds)->get();
-        return view("projects.skills")->with("project", $project)->with("skills", $skills)->with("success","Skill linked to project successfully!");
+        return view("projects.skills")->with("project", $project)->with("skills", $skills);
     }
 
     // @desc link skills
