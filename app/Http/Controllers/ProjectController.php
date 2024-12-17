@@ -107,7 +107,7 @@ class ProjectController extends Controller
     {
         $project->delete();
 
-        return redirect()->route("projects.index")->with("success","Skill deleted successfully!");
+        return redirect()->route("projects.index")->with("success","Project deleted successfully!");
     }
 
     // @desc manage skills
@@ -116,24 +116,24 @@ class ProjectController extends Controller
     {
         $associatedSkillIds = $project->linkedBySkills()->pluck('skill_id')->toArray();
         $skills = Skill::whereNotIn('id', $associatedSkillIds)->get();
-        return view("projects.skills")->with("project", $project)->with("skills", $skills);
+        return view("projects.skills")->with("project", $project)->with("skills", $skills)->with("success","Skill linked to project successfully!");
     }
 
     // @desc link skills
     // @route GET /projects/{$id}/skills/{$id}/add
-    public function addSkill(Project $project, Skill $skill): View
+    public function addSkill(Project $project, Skill $skill): RedirectResponse
     {
         if (!$project->linkedBySkills()->where('skill_id', $skill->id)->exists()){
             $project->linkedBySkills()->attach($skill->id);
         }
-        return $this->skills($project);
+        return redirect()->route("projects.skills", $project->id)->with("success","Skill linked to project successfully!");
     }
 
     // @desc unlink skills
     // @route GET /projects/{$id}/skills/{$id}/remove
-    public function removeSkill(Project $project, Skill $skill): View
+    public function removeSkill(Project $project, Skill $skill): RedirectResponse
     {
         $project->linkedBySkills()->detach($skill->id);
-        return $this->skills($project);
+        return redirect()->route("projects.skills", $project->id)->with("success","Skill removed from project successfully!");
     }
 }
