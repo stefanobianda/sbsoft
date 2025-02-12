@@ -20,6 +20,8 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 // Dashboard Section
 Route::get('/skilldashboard', [SkillDashboardController::class,'index'])->name('skilldashboard.index');
 
+Route::get('/skills/{skill}', [SkillController::class,'show'])->name('skills.show');
+
 Route::middleware('auth')->group(function () {
     // Categories
     Route::get('/categories', [CategoryController::class,'index'])->name('categories.index');
@@ -36,7 +38,7 @@ Route::middleware('auth')->group(function () {
     // CRUD
     Route::get('/skills/create', [SkillController::class,'create'])->name('skills.create');
     Route::post('/skills', [SkillController::class,'store'])->name('skills.store');
-    Route::get('/skills/{skill}', [SkillController::class,'show'])->name('skills.show');
+    //Route::get('/skills/{skill}', [SkillController::class,'show'])->name('skills.show');
     Route::get('/skills/{skill}/edit', [SkillController::class,'edit'])->name('skills.edit');
     Route::put('/skills/{skill}', [SkillController::class,'update'])->name('skills.update');
     Route::delete('/skills/{skill}', [SkillController::class,'destroy'])->name('skills.destroy');

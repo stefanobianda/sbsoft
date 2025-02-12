@@ -12,6 +12,9 @@
         <nav class="hidden md:flex items-center space-x-4">
             <ul class="flex space-x-6">
                 <li>
+                    <x-nav-link url='/' :active="request()->is('/')">Home</x-nav-link>
+                </li>
+                <li>
                     <x-nav-link url='/projects' :active="request()->is('projects')">Projects</x-nav-link>
                 </li>
                 @auth
@@ -32,11 +35,6 @@
                 </li>
                 @endauth
             </ul>
-            @auth
-            <x-logout-button />
-            @else
-            <x-nav-link url='/login' :active="request()->is('login')" icon="user">Login</x-nav-link>
-            @endauth
         </nav>
         <button id="hamburger" class="text-white md:hidden flex items-center">
             <i class="fa fa-bars text-2xl"></i>
@@ -46,12 +44,8 @@
     <nav
         id="mobile-menu"
         class="hidden md:hidden bg-blue-600 text-white mt-5 pb-4 space-y-2">
+        <x-nav-link url='/' :active="request()->is('/')" :mobile="true">Home</x-nav-link>
         <x-nav-link url='/projects' :active="request()->is('projects')" :mobile="true">Projects</x-nav-link>
         <x-nav-link url='/skilldashboard' :active="request()->is('skilldashboard')" :mobile="true">Skills</x-nav-link>
-        @auth
-        <x-logout-button />
-        @else
-        <x-nav-link url='/login' :active="request()->is('login')" icon="user">Login</x-nav-link>
-        @endauth
     </nav>
 </header>
