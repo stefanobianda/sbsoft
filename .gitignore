@@ -1,6 +1,7 @@
 /.phpunit.cache
+/database/factories
+/database/seeders
 /node_modules
-/public/build
 /public/hot
 /public/storage
 /storage/*.key
@@ -15,9 +16,11 @@ Homestead.json
 Homestead.yaml
 auth.json
 npm-debug.log
+package-lock.json
 yarn-error.log
 /.fleet
 /.idea
 /.nova
 /.vscode
 /.zed
+**/**/.DS_Store
