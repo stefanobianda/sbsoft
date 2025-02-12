@@ -1,7 +1,7 @@
 <footer class="bg-blue-600 text-black p-4">
     <div class="container mx-auto flex justify-between items-center py-4">
         <!-- Copyright a sinistra -->
-        <p class="text-sm">&copy; Stefano Bianda</p>
+        <p class="text-sm">&copy; SBSoft</p>
     
         <!-- Login/Logout a destra -->
         <div>

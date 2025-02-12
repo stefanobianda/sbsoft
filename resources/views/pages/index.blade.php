@@ -1,12 +1,12 @@
 <x-layout>
 <div class="container mx-auto flex items-center space-x-8 py-6">
     <!-- Immagine a sinistra -->
-    <div class="w-1/3">
+    <div  class="bg-gray-200 p-4 my-4 min-w-[256px] max-w-[516px]">
         <img src="{{ asset('images/StefanoBianda.JPG') }}" alt="Stefano Bianda" class="rounded-lg shadow-md">
     </div>
 
     <!-- Testo a destra -->
-    <div class="w-2/3">
+    <div class="bg-gray-200 p-4 my-4">
         <h1 class="text-2xl font-bold text-gray-800">Who is Stefano Bianda</h1>
         <p class="mt-2 text-gray-600">
             With 30 years as a <strong>Technical Project Leader</strong> and
