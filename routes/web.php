@@ -20,8 +20,6 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 // Dashboard Section
 Route::get('/skilldashboard', [SkillDashboardController::class,'index'])->name('skilldashboard.index');
 
-Route::get('/skills/{skill}', [SkillController::class,'show'])->name('skills.show');
-
 Route::middleware('auth')->group(function () {
     // Categories
     Route::get('/categories', [CategoryController::class,'index'])->name('categories.index');
@@ -59,6 +57,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/projects/{project}/skills/{skill}/remove', [ProjectController::class, 'removeSkill'])->name('projects.skills.remove');
     Route::post('/projects/{project}/skills/{skill}/add', [ProjectController::class, 'addSkill'])->name('projects.skills.add');
 });
+
+Route::get('/skills/{skill}', [SkillController::class,'show'])->name('skills.show');
 
 // Projects
 Route::get('/projects', [ProjectController::class,'index'])->name('projects.index');
