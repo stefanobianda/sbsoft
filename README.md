@@ -88,7 +88,12 @@ Una copia si trova nel folder ENVIRONMENT/sbsoft
 
 ## Aggiornamento del sito
 
-Eseguire un push del nuovo codice su git_depot
+Attenzione: ricordarsi di fare l'aggiornamento dei file javascript prima del commit da mandare in produzione
+
+npm run build
+
+Eseguire un push del nuovo codice su git_depot.
+Branch main: con push si salva su github, per git_depot eseguire push to e selezionare Infomaniak
 
 andare nella cartella del progetto ed eseguire il comando
 cd sites/sbsoft
