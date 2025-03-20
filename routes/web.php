@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SkillController;
 use App\Http\Controllers\SkillDashboardController;
 use Illuminate\Support\Facades\Route;
@@ -45,6 +46,21 @@ Route::middleware('auth')->group(function () {
     Route::delete('/skills/{skill}/projects/{project}/remove', [SkillController::class, 'removeProject'])->name('skills.projects.remove');
     Route::post('/skills/{skill}/projects/{project}/add', [SkillController::class, 'addProject'])->name('skills.projects.add');
 
+    // Roles
+    Route::get('/roles', [RoleController::class,'index'])->name('roles.index');
+    // CRUD
+    Route::get('/roles/create', [RoleController::class,'create'])->name('roles.create');
+    Route::post('/roles', [RoleController::class,'store'])->name('roles.store');
+    Route::get('/roles/{role}', [RoleController::class,'show'])->name('roles.show');
+    Route::get('/roles/{role}/edit', [RoleController::class,'edit'])->name('roles.edit');
+    Route::put('/roles/{role}', [RoleController::class,'update'])->name('roles.update');
+    Route::delete('/roles/{role}', [RoleController::class,'destroy'])->name('roles.destroy');
+    // Manage project
+    // Route::get('/roles/{role}/projects', [RoleController::class, 'projects'])->name('roles.projects');
+    // Route::delete('/roles/{role}/projects/{project}/remove', [RoleController::class, 'removeProject'])->name('roles.projects.remove');
+    // Route::post('/roles/{role}/projects/{project}/add', [RoleController::class, 'addProject'])->name('roles.projects.add');
+    
+    
     // Projects
     // CRUD
     Route::get('/projects/create', [ProjectController::class,'create'])->name('projects.create');
