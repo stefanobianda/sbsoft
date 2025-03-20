@@ -13,21 +13,15 @@
 <body>
     <x-header />
     <main class="w-full">
-        <!-- Under Construction -->
-        <div class="bg-yellow-500 w-full flex items-center justify-center">
-            <h1 class="text-red-600 text-5xl font-bold animate-pulse">
-                Website Work in Progress
-            </h1>
-        </div>
-        
-            {{-- Display alert messages --}}
-            @if(session('success'))
-            <x-alert type="success" message="{{session('success')}}" />
-            @endif
-            @if(session('error'))
-            <x-alert type="error" message="{{session('error')}}" />
-            @endif
-            {{$slot}}
+        <x-under-costruction />
+        {{-- Display alert messages --}}
+        @if(session('success'))
+        <x-alert type="success" message="{{session('success')}}" />
+        @endif
+        @if(session('error'))
+        <x-alert type="error" message="{{session('error')}}" />
+        @endif
+        {{$slot}}
     </main>
     <x-footer />
     <script src="{{asset('js/script.js')}}"></script>
