@@ -17,6 +17,9 @@
                 <li>
                     <x-nav-link url='/projects' :active="request()->is('projects')">Projects</x-nav-link>
                 </li>
+                <li>
+                    <x-nav-link url='/roles' :active="request()->is('roles')">Roles</x-nav-link>
+                </li>
                 @auth
                 <li class="relative group">
                     <x-nav-link url='/skilldashboard' :active="request()->is('skilldashboard')">Dashboard</x-nav-link>
@@ -26,6 +29,9 @@
                         </li>
                         <li>
                             <x-nav-link url='/categories' :active="request()->is('categories')">Categories</x-nav-link>
+                        </li>
+                        <li>
+                            <x-nav-link url='/roles' :active="request()->is('roles')">Roles</x-nav-link>
                         </li>
                     </ul>
                 </li>
@@ -46,6 +52,26 @@
         class="hidden md:hidden bg-blue-600 text-white mt-5 pb-4 space-y-2">
         <x-nav-link url='/' :active="request()->is('/')" :mobile="true">Home</x-nav-link>
         <x-nav-link url='/projects' :active="request()->is('projects')" :mobile="true">Projects</x-nav-link>
-        <x-nav-link url='/skilldashboard' :active="request()->is('skilldashboard')" :mobile="true">Skills</x-nav-link>
+        <x-nav-link url='/roles' :active="request()->is('roles')" :mobile="true">Roles</x-nav-link>
+        @auth
+        <li class="relative group">
+            <x-nav-link url='/skilldashboard' :active="request()->is('skilldashboard')" :mobile="true">Dashboard</x-nav-link>
+            <ul class="absolute left-0 w-40 bg-blue-600 rounded shadow-lg mt-2 hidden group-hover:block">
+                <li>
+                    <x-nav-link url='/skills' :active="request()->is('skills')" :mobile="true">Skills</x-nav-link>
+                </li>
+                <li>
+                    <x-nav-link url='/categories' :active="request()->is('categories')" :mobile="true">Categories</x-nav-link>
+                </li>
+                <li>
+                    <x-nav-link url='/roles' :active="request()->is('roles')" :mobile="true">Roles</x-nav-link>
+                </li>
+            </ul>
+        </li>
+                @else
+        <li>
+            <x-nav-link url='/skilldashboard' :active="request()->is('skilldashboard')" :mobile="true">Skills</x-nav-link>
+        </li>
+        @endauth
     </nav>
 </header>

@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SkillController;
 use App\Http\Controllers\SkillDashboardController;
 use Illuminate\Support\Facades\Route;
@@ -17,9 +18,6 @@ Route::middleware('guest')->group(function () {
 
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-// Dashboard Section
-Route::get('/skilldashboard', [SkillDashboardController::class,'index'])->name('skilldashboard.index');
-
 Route::middleware('auth')->group(function () {
     // Categories
     Route::get('/categories', [CategoryController::class,'index'])->name('categories.index');
@@ -31,12 +29,9 @@ Route::middleware('auth')->group(function () {
     Route::put('/categories/{category}', [CategoryController::class,'update'])->name('categories.update');
     Route::delete('/categories/{category}', [CategoryController::class,'destroy'])->name('categories.destroy');
 
-    // Skills
-    Route::get('/skills', [SkillController::class,'index'])->name('skills.index');
-    // CRUD
+    // Skills CRUD
     Route::get('/skills/create', [SkillController::class,'create'])->name('skills.create');
     Route::post('/skills', [SkillController::class,'store'])->name('skills.store');
-    //Route::get('/skills/{skill}', [SkillController::class,'show'])->name('skills.show');
     Route::get('/skills/{skill}/edit', [SkillController::class,'edit'])->name('skills.edit');
     Route::put('/skills/{skill}', [SkillController::class,'update'])->name('skills.update');
     Route::delete('/skills/{skill}', [SkillController::class,'destroy'])->name('skills.destroy');
@@ -45,8 +40,19 @@ Route::middleware('auth')->group(function () {
     Route::delete('/skills/{skill}/projects/{project}/remove', [SkillController::class, 'removeProject'])->name('skills.projects.remove');
     Route::post('/skills/{skill}/projects/{project}/add', [SkillController::class, 'addProject'])->name('skills.projects.add');
 
-    // Projects
-    // CRUD
+    // Roles CRUD
+    Route::get('/roles/create', [RoleController::class,'create'])->name('roles.create');
+    Route::post('/roles', [RoleController::class,'store'])->name('roles.store');
+    Route::get('/roles/{role}/edit', [RoleController::class,'edit'])->name('roles.edit');
+    Route::put('/roles/{role}', [RoleController::class,'update'])->name('roles.update');
+    Route::delete('/roles/{role}', [RoleController::class,'destroy'])->name('roles.destroy');
+    // Manage project
+    Route::get('/roles/{role}/projects', [RoleController::class, 'projects'])->name('roles.projects');
+    Route::delete('/roles/{role}/projects/{project}/remove', [RoleController::class, 'removeProject'])->name('roles.projects.remove');
+    Route::post('/roles/{role}/projects/{project}/add', [RoleController::class, 'addProject'])->name('roles.projects.add');
+    
+    
+    // Projects CRUD
     Route::get('/projects/create', [ProjectController::class,'create'])->name('projects.create');
     Route::post('/projects', [ProjectController::class,'store'])->name('projects.store');
     Route::get('/projects/{project}/edit', [ProjectController::class,'edit'])->name('projects.edit');
@@ -58,7 +64,16 @@ Route::middleware('auth')->group(function () {
     Route::post('/projects/{project}/skills/{skill}/add', [ProjectController::class, 'addSkill'])->name('projects.skills.add');
 });
 
+// Dashboard Section
+Route::get('/skilldashboard', [SkillDashboardController::class,'index'])->name('skilldashboard.index');
+
+// Skills
+Route::get('/skills', [SkillController::class,'index'])->name('skills.index');
 Route::get('/skills/{skill}', [SkillController::class,'show'])->name('skills.show');
+
+// Roles
+Route::get('/roles', [RoleController::class,'index'])->name('roles.index');
+Route::get('/roles/{role}', [RoleController::class,'show'])->name('roles.show');
 
 // Projects
 Route::get('/projects', [ProjectController::class,'index'])->name('projects.index');
