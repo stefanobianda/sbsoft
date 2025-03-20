@@ -126,7 +126,7 @@ class SkillController extends Controller
     }
 
     // @desc unlink skills
-    // @route GET /projects/{$id}/skills/{$id}/remove
+    // @route GET /skills/{$id}/projects/{$id}/remove
     public function removeProject(Skill $skill, Project $project): RedirectResponse
     {
         $skill->linkedByProjects()->detach($project->id);

@@ -136,4 +136,31 @@ class ProjectController extends Controller
         $project->linkedBySkills()->detach($skill->id);
         return redirect()->route("projects.skills", $project->id)->with("success","Skill removed from project successfully!");
     }
+
+    // @desc manage roles
+    // @route GET /projects/{$id}/roles
+    public function roles(Project $project): View
+    {
+        $associatedRoleIds = $project->linkedByRoles()->pluck('role_id')->toArray();
+        $roles = Role::whereNotIn('id', $associatedRoleIds)->get();
+        return view("projects.roles")->with("project", $project)->with("roles", $roles);
+    }
+
+    // @desc link role
+    // @route GET /projects/{$id}/roles/{$id}/add
+    public function addRole(Project $project, Role $role): RedirectResponse
+    {
+        if (!$project->linkedByRoles()->where('role_id', $role->id)->exists()){
+            $project->linkedByRoles()->attach($role->id);
+        }
+        return redirect()->route("projects.roles", $project->id)->with("success","Role linked to project successfully!");
+    }
+
+    // @desc unlink role
+    // @route GET /projects/{$id}/roles/{$id}/remove
+    public function removeRole(Project $project, Role $role): RedirectResponse
+    {
+        $project->linkedByRoles()->detach($role->id);
+        return redirect()->route("projects.roles", $project->id)->with("success","Role removed from project successfully!");
+    }
 }

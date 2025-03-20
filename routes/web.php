@@ -56,9 +56,9 @@ Route::middleware('auth')->group(function () {
     Route::put('/roles/{role}', [RoleController::class,'update'])->name('roles.update');
     Route::delete('/roles/{role}', [RoleController::class,'destroy'])->name('roles.destroy');
     // Manage project
-    // Route::get('/roles/{role}/projects', [RoleController::class, 'projects'])->name('roles.projects');
-    // Route::delete('/roles/{role}/projects/{project}/remove', [RoleController::class, 'removeProject'])->name('roles.projects.remove');
-    // Route::post('/roles/{role}/projects/{project}/add', [RoleController::class, 'addProject'])->name('roles.projects.add');
+    Route::get('/roles/{role}/projects', [RoleController::class, 'projects'])->name('roles.projects');
+    Route::delete('/roles/{role}/projects/{project}/remove', [RoleController::class, 'removeProject'])->name('roles.projects.remove');
+    Route::post('/roles/{role}/projects/{project}/add', [RoleController::class, 'addProject'])->name('roles.projects.add');
     
     
     // Projects

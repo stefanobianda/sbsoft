@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Role;
+use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
@@ -101,5 +102,33 @@ class RoleController extends Controller
 
         return redirect()->route("roles.index")->with("success","Role deleted successfully!");
     }
+
+    // @desc manage projects
+    // @route GET /roles/{$id}/projects
+    public function projects(Role $role): View
+    {
+        $associatedProjectIds = $role->linkedByProjects()->pluck('project_id')->toArray();
+        $projects = Project::whereNotIn('id', $associatedProjectIds)->get();
+        return view("roles.projects")->with("role", $role)->with("projects", $projects);
+    }
+
+    // @desc link project
+    // @route GET /roles/{$id}/projects/{$id}/add
+    public function addProject(Role $role, Project $project): RedirectResponse
+    {
+        if (!$role->linkedByProjects()->where('project_id', $project->id)->exists()){
+            $role->linkedByProjects()->attach($project->id);
+        }
+        return redirect()->route("roles.projects", $role->id)->with("success","Project linked to role successfully!");
+    }
+
+    // @desc unlink role
+    // @route GET /roles/{$id}/projects/{$id}/remove
+    public function removeProject(Role $role, Project $project): RedirectResponse
+    {
+        $role->linkedByProjects()->detach($project->id);
+        return redirect()->route("roles.projects", $role->id)->with("success","Project removed from role successfully!");
+    }
+
 
 }

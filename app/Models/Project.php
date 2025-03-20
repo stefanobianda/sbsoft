@@ -29,4 +29,9 @@ class Project extends Model
         return $this->belongsToMany(Skill::class, 'projects_skills')->withTimestamps();
     }
 
+    public function linkedByRoles(): BelongsToMany
+    {
+        return $this->belongsToMany(Role::class, 'projects_roles')->withTimestamps();
+    }
+
 }
