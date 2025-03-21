@@ -4,15 +4,15 @@
     <div class="bg-gray-200 p-4 my-4 flex grid grid-cols-1 md:grid-cols-4 gap-4 m-4 rounded-lg">
         @foreach ($role->linkedByProjects as $project)
         <div>
-            <x-project :project=$project />
-            <x-form-button action="{{route('roles.projects.remove', [ 'project' => $project->id, 'role' => $role->id ])}}" :delete='true' icon='fa-unlink' text="Unlink Project" />
+            <x-project :project=$project background="bg-gray-300" />
+            <x-form-button action="{{route('roles.projects.remove', [ 'project' => $project->id, 'role' => $role->id ])}}" :delete='true' icon='fa-unlink' text="Unlink Project" bgClass="bg-red-500" hoverClass="hover:bg-red-600" />
         </div>
         @endforeach
     </div>
     <div class="bg-gray-200 p-4 my-4 flex grid grid-cols-1 md:grid-cols-4 gap-4 m-4 rounded-lg">
         @foreach ($projects as $project)
         <div>
-            <x-project :project=$project />
+            <x-project :project=$project background="bg-gray-300" />
             <x-form-button action="{{route('roles.projects.add', [ 'project' => $project->id, 'role' => $role->id ])}}" text="Link Project" />
         </div>
         @endforeach

@@ -62,6 +62,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/projects/{project}/skills', [ProjectController::class, 'skills'])->name('projects.skills');
     Route::delete('/projects/{project}/skills/{skill}/remove', [ProjectController::class, 'removeSkill'])->name('projects.skills.remove');
     Route::post('/projects/{project}/skills/{skill}/add', [ProjectController::class, 'addSkill'])->name('projects.skills.add');
+    // Manage role
+    Route::get('/projects/{project}/roles', [ProjectController::class, 'roles'])->name('projects.roles');
+    Route::delete('/projects/{project}/roles/{role}/remove', [ProjectController::class, 'removeRole'])->name('projects.roles.remove');
+    Route::post('/projects/{project}/roles/{role}/add', [ProjectController::class, 'addRole'])->name('projects.roles.add');
 });
 
 // Dashboard Section

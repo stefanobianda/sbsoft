@@ -5,7 +5,7 @@
         @foreach ($skill->linkedByProjects as $project)
         <div>
             <x-project :project=$project />
-            <x-form-button action="{{route('skills.projects.remove', [ 'project' => $project->id, 'skill' => $skill->id ])}}" :delete='true' icon='fa-unlink' text="Unlink Project" />
+            <x-form-button action="{{route('skills.projects.remove', [ 'project' => $project->id, 'skill' => $skill->id ])}}" :delete='true' icon='fa-unlink' text="Unlink Project" bgClass="bg-red-500" hoverClass="hover:bg-red-600" />
         </div>
         @endforeach
     </div>

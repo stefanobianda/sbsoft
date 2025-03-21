@@ -19,6 +19,10 @@
         <x-text-info text="I haven't held any role in the {{ $project->name }} project yet." />   
     @endif
 
+    @auth
+        <x-button-link url="{{route('projects.roles', $project->id)}}">Manage Roles</x-button-link>
+    @endauth
+
     @if ($project->linkedBySkills->isNotEmpty())
         <x-text-title text="In the {{ $project->name }} project, I utilized and applied a variety of skills including:" />
             <div class="bg-gray-200 p-4 my-4 flex grid grid-cols-1 md:grid-cols-4 gap-4 m-4 rounded-lg">

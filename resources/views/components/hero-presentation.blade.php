@@ -7,7 +7,7 @@
             I have extensive experience in <strong>agile software development</strong>.
         </p>
         <p class="mt-2 text-gray-600">
-            I lead a team of 30-50 engineers with an annual budget of CHF 4 million, focusing on quality and on
+            I led a team of 30-50 engineers with an annual budget of CHF 4 million, focusing on quality and on
             technology-driven solutions that add value for stakeholders.
         </p>
         <p class="mt-2 text-gray-600">
@@ -19,8 +19,7 @@
             promoting containerization with <strong>Docker</strong> and <strong>Kubernetes</strong> to support cloud-native applications.
         </p>
         <p class="mt-2 text-gray-600">
-            I excel in coordinating complex projects and solving problems by addressing root causes, I enjoy
-            working in a team and collaborating constructively.
+            I have the skills to manage complex projects and solve problems by getting to the root cause. I enjoy working in a team and collaborating effectively.
         </p>
         <p class="mt-2 text-gray-600">
             My mother tongue is <strong>Italian</strong>, and over the years, I have learned to communicate effectively with
