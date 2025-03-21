@@ -23,7 +23,7 @@
         <x-text-title text="In the {{ $project->name }} project, I utilized and applied a variety of skills including:" />
             <div class="bg-gray-200 p-4 my-4 flex grid grid-cols-1 md:grid-cols-4 gap-4 m-4 rounded-lg">
                 @foreach ($project->linkedBySkills as $skill)
-                    <x-skill :skill=$skill list="show" />
+                    <x-skill :skill=$skill list="show" background="bg-gray-300"/>
                 @endforeach
             </div>
         <x-text-info text="Click on a skill to see which other projects I've applied it to." />

@@ -5,7 +5,7 @@
     <div>
         <div class="bg-gray-200 grid grid-cols-1 md:grid-cols-4 gap-4 m-4">
             @forelse($skills as $skill)
-                <x-skill :skill="$skill" list="show" />
+                <x-skill :skill="$skill" list="show" background="bg-gray-300"/>
             @empty
                 <li>No skill available</li>
             @endforelse

@@ -3,14 +3,10 @@
     <div class="items-center py-6">
 
         <x-hero-image />
-
-        <x-hero-school />
-
+        <x-hero-offer />
         <x-hero-contacts />
-
+        <x-hero-school />
         <x-hero-presentation />
-
-        <!-- Contatto -->
         
     </div>
 </div>

@@ -13,7 +13,7 @@
 <body>
     <x-header />
     <main class="w-full">
-        <x-under-costruction />
+        {{-- <x-under-costruction /> --}}
         {{-- Display alert messages --}}
         @if(session('success'))
         <x-alert type="success" message="{{session('success')}}" />

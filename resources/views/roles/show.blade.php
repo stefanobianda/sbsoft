@@ -12,7 +12,7 @@
         <x-text-title text="As a {{ $role->name }}, I have worked on the following projects:" />
         <div class="bg-gray-200 p-4 my-4 flex grid grid-cols-1 md:grid-cols-4 gap-4 m-4 rounded-lg">
             @foreach ($role->linkedByProjects as $project)
-                <x-project :project=$project />
+                <x-project :project=$project background="bg-gray-300"/>
             @endforeach
         </div>
         <x-text-info text="Click on a project to explore the roles I took on and the skills I developed throughout the journey." />
