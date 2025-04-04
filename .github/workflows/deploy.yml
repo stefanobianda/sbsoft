@@ -1,0 +1,31 @@
+name: Deploy to Web Server
+
+on:
+  push:
+    branches:
+      - main  # Si attiva quando si fa push su main
+  workflow_dispatch:  # Esegui manualmente se necessario
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Push to deposit repository
+        run: |
+          git remote add deposit ${{ secrets.SERVER_SSH_GIT }}/git_depot/sbsoft.git
+          git push deposit main
+
+      - name: Connect to Web Server and Pull Changes
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd sites/sbsoft
+            git pull origin main
+            echo "Deploy completato con successo!"
