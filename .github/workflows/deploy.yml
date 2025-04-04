@@ -25,6 +25,7 @@ jobs:
         run: |
           git remote add deposit ${{ secrets.SERVER_SSH_GIT }}/git_depot/sbsoft.git
           git fetch deposit
+          git log --oneline --graph --decorate --all --branches
           git status          
           git push deposit main
         
