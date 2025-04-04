@@ -23,7 +23,7 @@ jobs:
       
       - name: Push to deposit repository
         run: |
-          git remote add deposit ${{ secrets.SERVER_SSH_GIT }}/git_depot/sbsoft.git       
+          git remote add deposit ssh://${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:/home/clients/5e12fea1847b615953d37ff7a8bcc6f9/git_depot/sbsoft.git       
           git push deposit main --force
         
       - name: Connect to Web Server and Pull Changes
