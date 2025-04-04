@@ -27,7 +27,7 @@ jobs:
           git fetch deposit
           git log --oneline --graph --decorate --all --branches
           git status          
-          git push deposit main
+          git push deposit main --force
         
       - name: Connect to Web Server and Pull Changes
         uses: appleboy/ssh-action@v0.1.10
