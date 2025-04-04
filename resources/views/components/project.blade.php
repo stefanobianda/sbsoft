@@ -6,6 +6,7 @@
         <div class="flex justify-center mb-4">
         <img src="{{ $project->image ? asset('storage/' . $project->image) : asset('images/no-image-available.png') }}" alt="no image available" class="h-20 m-1">
         </div>
+        <p>{{$project->shortDescription}}</p>
     </a>
 </div>
 
