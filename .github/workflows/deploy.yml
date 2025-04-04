@@ -13,7 +13,12 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
+        
+      - name: Add SSH key to known hosts
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -H ${{ secrets.SERVER_SSH_HOST }} >> ~/.ssh/known_hosts
+      
       - name: Push to deposit repository
         run: |
           git remote add deposit ${{ secrets.SERVER_SSH_GIT }}/git_depot/sbsoft.git
