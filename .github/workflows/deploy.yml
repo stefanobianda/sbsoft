@@ -24,8 +24,16 @@ jobs:
       - name: Push to deposit repository
         run: |
           git remote add deposit ${{ secrets.SERVER_SSH_GIT }}/git_depot/sbsoft.git
-          git push deposit main
-
+          
+      - name: Fetch latest changes from remote
+        run: |
+            git fetch deposit
+            git reset --soft deposit/main || echo "No changes to reset"
+        
+      - name: Push to deposit repository
+        run: |
+            git push deposit main
+        
       - name: Connect to Web Server and Pull Changes
         uses: appleboy/ssh-action@v0.1.10
         with:
