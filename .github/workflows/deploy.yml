@@ -38,3 +38,9 @@ jobs:
             cd sites/sbsoft
             git pull origin main
             echo "Deploy completato con successo!"
+
+      - name: Slack Notification
+        run: |
+          curl -X POST -H 'Content-type: application/json' \
+          --data '{"text":"✅ Deploy completato con successo!"}' \
+          ${{ secrets.SLACK_WEBHOOK_URL }}
