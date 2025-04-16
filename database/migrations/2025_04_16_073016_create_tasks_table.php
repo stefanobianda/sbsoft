@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('experience_id')->constrained('experiences')->onDelete('cascade');
+            $table->string(column: 'description');
             $table->timestamps();
         });
     }
