@@ -10,7 +10,7 @@
 
         <x-inputs.text id="name" name="name" label="Achievement name" placeholder="Achievement name" :value="old('name', $achievement->name)"/>
 
-        <x-inputs.text id="description" name="description" label="Achievement Description" placeholder="Description of the achievement" :value="old('description', $achievement->description)"/>
+        <x-inputs.textarea id="description" name="description" label="Achievement Description" placeholder="Description of the achievement" :value="old('description', $achievement->description)"/>
 
         <button type="submit" class="w-full bg-green-500 hover:bg-green-600 text-white px-4 py-2 my-3 rounded focus:outline-none">Save</button>
     </form>

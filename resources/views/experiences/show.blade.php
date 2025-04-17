@@ -40,14 +40,18 @@
             @auth
                 @foreach ($experience->achievements as $achievement)
                 <h2 class="text-3xl font-extrabold">{{ $achievement->name }}</h2>
-                <p>{{ $achievement->description }}</p>
+                <div class="prose">
+                    {!! $achievement->description !!}
+                </div>
                 <x-button-link url="{{route('achievements.edit', [$experience->id, $achievement->id])}}">Edit Achievement</x-button-link>
-                    <x-delete-button action="{{route('achievements.destroy', [$experience->id, $achievement->id])}}" text="Delete Achievement" />
+                <x-delete-button action="{{route('achievements.destroy', [$experience->id, $achievement->id])}}" text="Delete Achievement" />
                 @endforeach
             @else
                 @foreach ($experience->achievements as $achievement)
                 <h2 class="text-3xl font-extrabold">{{ $achievement->name }}</h2>
-                <p>{{ $achievement->description }}</p>
+                <div class="prose">
+                {!! $achievement->description !!}
+                </div>
                 @endforeach
             @endauth
         </div>
