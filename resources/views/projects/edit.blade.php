@@ -20,6 +20,8 @@
         <x-inputs.text id="description" name="description" label="Project Description" placeholder="Description of the project" :value="old('description', $project->description)"/>
 
         <x-inputs.text id="company" name="company" label="Company" placeholder="Name of the company" :value="old('company', $project->company)"/>
+        
+        <x-inputs.select id="experience_id" name="experience_id" label="Experience" value="{{old('experience_id')}}" :options="$experiences" />
 
         <x-inputs.file id="image" name="image" label="Project image" :value="old('image', $project->image)"/>
 
