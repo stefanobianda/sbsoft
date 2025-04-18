@@ -1,5 +1,7 @@
 <x-layout>
 
+    <x-image-background />
+
     <x-text-title text="Welcome to my Experience Portfolio – Explore my Software Development Journey." />
     <div class="bg-gray-200 p-4 my-4 flex grid grid-cols-1 md:grid-cols-4 gap-4 m-4 rounded-lg">
         @forelse($experiences as $experience)

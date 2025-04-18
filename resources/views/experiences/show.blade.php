@@ -7,17 +7,10 @@
         <x-delete-button action="{{route('experiences.destroy', $experience->id)}}" text="Remove Experience" />
     @endauth
 
-    @if($experience->projects->isNotEmpty())
-        <x-text-title text="My experience at {{ $experience->name }} was around different projects" />
-        <div class="bg-gray-200 p-4 my-4 flex grid grid-cols-1 md:grid-cols-4 gap-4 m-4 rounded-lg">
-            @foreach ($experience->projects as $project)
-                <x-project :project=$project background="bg-gray-300"/>
-            @endforeach
-        </div>
-        <x-text-info text="Click on a project to discover the skills I honed throughout the journey and the roles I played." />
-    @else
-        <x-text-info text="At the moment, I don't have partecipate to any project at {{ $experience->name }}." />
-    @endif
+    <x-projects-section :projects="$experience->projects" 
+                        title="My experience at {{ $experience->name }} was around different projects" 
+                        clic="Click on a project to discover the skills I honed throughout the journey and the roles I played." 
+                        empty="At the moment, I don't have partecipate to any project at {{ $experience->name }}." />
 
     @if($experience->tasks->isNotEmpty())
         <x-text-title text="Description of the activities at {{ $experience->name }}:" />

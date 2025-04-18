@@ -1,5 +1,7 @@
 <x-layout>
 
+    <x-image-background />
+
     <x-text-title text="Explore the Roles I've taken in my Projects – A Snapshot of my Professional Journey." />
     <div class="bg-gray-200 p-4 my-4 flex grid grid-cols-1 md:grid-cols-4 gap-4 m-4 rounded-lg">
         @forelse($roles as $role)

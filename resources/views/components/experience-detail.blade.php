@@ -1,14 +1,22 @@
 @props(['experience'])
 
-<div class="items-left rounded-lg flex flex-col justify-left text-left  p-4 my-4 gap-4 m-4 ">
-    <a href="{{route('experiences.show', $experience->id)}}">
-        <h1 class="text-3xl font-bold mb-4">{{$experience->name}}</h1>
-        <p>{{$experience->description}}</p>
-        <div class="flex justify-center mb-4">
-        <img src="{{ $experience->image ? asset('storage/' . $experience->image) : asset('images/no-image-available.png') }}" alt="no image available" class="h-20 m-1">
-        </div>
-        <p>{{$experience->company}}</p>
-    </a>
-</div>
+<x-image-background />
 
+<h1 class="text-3xl text-center font-bold m-10">{{$experience->name}}</h1>
+<a href="{{route('experiences.show', $experience->id)}}">
+    <div class="relative items-center rounded-lg flex flex-col justify-center text-center gap-4 m-4 overflow-hidden min-h-[200px]">
+
+        {{-- BACKGROUND IMAGE --}}
+        <div class="absolute inset-0 z-0 bg-cover bg-center"
+             style="background-image: url('{{ $experience->image ? asset('storage/' . $experience->image) : asset('images/no-image-available.png') }}');">
+        </div>
+
+        {{-- MAIN CONTENT --}}
+        <div class="z-10 flex flex-col items-center justify-center text-center gap-4">
+            <p>{{$experience->description}}</p>
+            <p>{{$experience->company}}</p>
+        </div>
+
+    </div>
+</a>
 
