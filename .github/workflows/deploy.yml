@@ -35,9 +35,10 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
+            source ~/.profile
             cd sites/sbsoft
             git pull origin main
-            /opt/php8.4/bin/php artisan migrate
+            php artisan migrate --force
             echo "Deploy completato con successo!"
 
       - name: Slack Notification
