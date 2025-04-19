@@ -1,5 +1,7 @@
 <x-layout>
 
+    <x-image-background />
+
     <x-project-detail :project="$project" />
 
     @auth
@@ -23,17 +25,10 @@
         <x-button-link url="{{route('projects.roles', $project->id)}}">Manage Roles</x-button-link>
     @endauth
 
-    @if ($project->linkedBySkills->isNotEmpty())
-        <x-text-title text="In the {{ $project->name }} project, I utilized and applied a variety of skills including:" />
-            <div class="bg-gray-200 p-4 my-4 flex grid grid-cols-1 md:grid-cols-4 gap-4 m-4 rounded-lg">
-                @foreach ($project->linkedBySkills as $skill)
-                    <x-skill :skill=$skill list="show" background="bg-gray-300"/>
-                @endforeach
-            </div>
-        <x-text-info text="Click on a skill to see which other projects I've applied it to." />
-    @else
-        <x-text-info text="I haven't utilized any skills in the {{ $project->name }} project yet." />
-    @endif
+    <x-skills-section :skills="$project->linkedBySkills" 
+        title="In the {{ $project->name }} project, I utilized and applied a variety of skills including:" 
+        clic="Click on a skill to see which other projects I've applied it to." 
+        empty="I haven't utilized any skills in the {{ $project->name }} project yet." />
 
     @auth
         <x-button-link url="{{route('projects.skills', $project->id)}}">Manage Skills</x-button-link>

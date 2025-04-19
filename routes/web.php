@@ -7,6 +7,9 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SkillController;
 use App\Http\Controllers\SkillDashboardController;
+use App\Http\Controllers\ExperienceController;
+use App\Http\Controllers\TaskController;
+use App\Http\Controllers\AchievementController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class,'index'])->name('home');
@@ -66,6 +69,28 @@ Route::middleware('auth')->group(function () {
     Route::get('/projects/{project}/roles', [ProjectController::class, 'roles'])->name('projects.roles');
     Route::delete('/projects/{project}/roles/{role}/remove', [ProjectController::class, 'removeRole'])->name('projects.roles.remove');
     Route::post('/projects/{project}/roles/{role}/add', [ProjectController::class, 'addRole'])->name('projects.roles.add');
+
+    // Experiences CRUD
+    Route::get('/experiences/create', [ExperienceController::class,'create'])->name('experiences.create');
+    Route::post('/experiences', [ExperienceController::class,'store'])->name('experiences.store');
+    Route::get('/experiences/{experience}/edit', [ExperienceController::class,'edit'])->name('experiences.edit');
+    Route::put('/experiences/{experience}', [ExperienceController::class,'update'])->name('experiences.update');
+    Route::delete('/experiences/{experience}', [ExperienceController::class,'destroy'])->name('experiences.destroy');
+
+    // Tasks CRUD
+    Route::get('/experiences/{experience}/tasks/create', [TaskController::class,'create'])->name('tasks.create');
+    Route::post('/experiences/{experience}/tasks', [TaskController::class,'store'])->name('tasks.store');
+    Route::get('/experiences/{experience}/tasks/{task}/edit', [TaskController::class,'edit'])->name('tasks.edit');
+    Route::put('/experiences/{experience}/tasks/{task}', [TaskController::class,'update'])->name('tasks.update');
+    Route::delete('/experiences/{experience}/tasks/{task}', [TaskController::class,'destroy'])->name('tasks.destroy');
+    
+    // Achievement CRUD
+    Route::get('/experiences/{experience}/achievements/create', [AchievementController::class,'create'])->name('achievements.create');
+    Route::post('/experiences/{experience}/achievements', [AchievementController::class,'store'])->name('achievements.store');
+    Route::get('/experiences/{experience}/achievements/{achievement}/edit', [AchievementController::class,'edit'])->name('achievements.edit');
+    Route::put('/experiences/{experience}/achievements/{achievement}', [AchievementController::class,'update'])->name('achievements.update');
+    Route::delete('/experiences/{experience}/achievements/{achievement}', [AchievementController::class,'destroy'])->name('achievements.destroy');
+    
 });
 
 // Dashboard Section
@@ -82,4 +107,8 @@ Route::get('/roles/{role}', [RoleController::class,'show'])->name('roles.show');
 // Projects
 Route::get('/projects', [ProjectController::class,'index'])->name('projects.index');
 Route::get('/projects/{project}', [ProjectController::class,'show'])->name('projects.show');
+
+// Experiences
+Route::get('/experiences', [ExperienceController::class,'index'])->name('experiences.index');
+Route::get('/experiences/{experience}', [ExperienceController::class,'show'])->name('experiences.show');
 

@@ -48,7 +48,7 @@ class RoleController extends Controller
         $validatedData = $request->validate([
             "name"=> "required|string|max:20",
             "description"=> "nullable|string|max:256",
-            'image' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:512',
+            'image' => 'nullable|image|mimes:jpeg,jpg,png,gif,webp|max:512',
         ]);
 
         // Check for image
@@ -71,7 +71,7 @@ class RoleController extends Controller
         $validatedData = $request->validate([
             "name"=> "required|string|max:20",
             "description"=> "nullable|string|max:256",
-            'image' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:512',
+            'image' => 'nullable|image|mimes:jpeg,jpg,png,gif,webp|max:512',
         ]);
 
         // Check for image

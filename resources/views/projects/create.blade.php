@@ -16,6 +16,8 @@
 
             <x-inputs.text id="company" name="company" label="Company" placeholder="Name of the company"/>
 
+            <x-inputs.select id="experience_id" name="experience_id" label="Experience" value="{{old('experience_id')}}" :options="$experiences" />
+
             <x-inputs.file id="image" name="image" label="Project image" />
 
             <button type="submit" class="w-full bg-green-500 hover:bg-green-600 text-white px-4 py-2 my-3 rounded focus:outline-none">Create</button>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Experience;
 use App\Models\Project;
 use App\Models\Skill;
 use App\Models\Role;
@@ -25,7 +26,7 @@ class ProjectController extends Controller
     // @route GET /projects/create
     public function create(): View
     {
-        return view("projects.create");
+        return view("projects.create")->with("experiences", Experience::all()->pluck("name","id"));
     }
 
     // @desc Show a single project
@@ -39,7 +40,7 @@ class ProjectController extends Controller
     // @route GET /projects/{$id}/edit
     public function edit(Project $project): View
     {
-        return view("projects.edit")->with("project", $project);
+        return view("projects.edit")->with("project", $project)->with("experiences", Experience::all()->pluck("name","id"));;
     }
 
     // @desc Save the new project
@@ -52,7 +53,8 @@ class ProjectController extends Controller
             "role"=> "string|max:100",
             "description"=> "nullable|string|max:100",
             "company"=> "nullable|string|max:30",
-            'image' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:512',
+            "experience_id" => "required",
+            'image' => 'nullable|image|mimes:jpeg,jpg,png,gif,webp|max:512',
         ]);
 
         // Check for image
@@ -79,7 +81,8 @@ class ProjectController extends Controller
             "role"=> "string|max:100",
             "description"=> "nullable|string|max:100",
             "company"=> "nullable|string|max:30",
-            'image' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:512',
+            "experience_id" => "required",
+            'image' => 'nullable|image|mimes:jpeg,jpg,png,gif,webp|max:512',
         ]);
 
         // Check for image

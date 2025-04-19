@@ -49,7 +49,7 @@ class SkillController extends Controller
         $validatedData = $request->validate([
             "name"=> "required|string|max:20",
             "description"=> "nullable|string|max:100",
-            'image' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:512',
+            'image' => 'nullable|image|mimes:jpeg,jpg,png,gif,webp|max:512',
             'category_id' => 'required|exists:categories,id',
         ]);
 
@@ -73,7 +73,7 @@ class SkillController extends Controller
         $validatedData = $request->validate([
             "name"=> "required|string|max:20",
             "description"=> "nullable|string|max:100",
-            'image' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:512',
+            'image' => 'nullable|image|mimes:jpeg,jpg,png,gif,webp|max:512',
             'category_id' => 'required|exists:categories,id',
         ]);
 

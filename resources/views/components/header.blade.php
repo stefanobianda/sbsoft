@@ -15,6 +15,9 @@
                     <x-nav-link url='/' :active="request()->is('/')">Home</x-nav-link>
                 </li>
                 <li>
+                    <x-nav-link url='/experiences' :active="request()->is('experiences')">Experiences</x-nav-link>
+                </li>
+                <li>
                     <x-nav-link url='/projects' :active="request()->is('projects')">Projects</x-nav-link>
                 </li>
                 <li>
@@ -51,6 +54,7 @@
         id="mobile-menu"
         class="hidden md:hidden bg-blue-600 text-white mt-5 pb-4 space-y-2">
         <x-nav-link url='/' :active="request()->is('/')" :mobile="true">Home</x-nav-link>
+        <x-nav-link url='/experiences' :active="request()->is('experiences')" :mobile="true">Experiences</x-nav-link>
         <x-nav-link url='/projects' :active="request()->is('projects')" :mobile="true">Projects</x-nav-link>
         <x-nav-link url='/roles' :active="request()->is('roles')" :mobile="true">Roles</x-nav-link>
         @auth
