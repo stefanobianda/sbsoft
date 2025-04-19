@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{asset('css/style.css')}}"
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="//unpkg.com/alpinejs" defer></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <title>{{$title ?? 'SBSoft'}}</title>
 </head>
 <body>
