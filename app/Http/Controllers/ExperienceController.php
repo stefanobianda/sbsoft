@@ -45,8 +45,8 @@ class ExperienceController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $validatedData = $request->validate([
-            "name"=> "required|string|max:64",
-            "description"=> "string|max:255",
+            "name"=> "required|string|max:128",
+            "description"=> "string|max:8192",
             "company"=> "string|max:64",
             'image' => 'nullable|image|mimes:jpeg,jpg,png,gif,webp|max:512',
         ]);
@@ -70,8 +70,8 @@ class ExperienceController extends Controller
     public function update(Request $request, Experience $experience): RedirectResponse
     {
         $validatedData = $request->validate([
-            "name"=> "required|string|max:64",
-            "description"=> "nullable|string|max:255",
+            "name"=> "required|string|max:128",
+            "description"=> "nullable|string|max:8192",
             "company"=> "nullable|string|max:64",
             'image' => 'nullable|image|mimes:jpeg,jpg,png,gif,webp|max:512',
         ]);
