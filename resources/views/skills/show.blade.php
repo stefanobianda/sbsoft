@@ -1,5 +1,7 @@
 <x-layout>
 
+    <x-image-background />
+
     <x-skill :skill=$skill list="edit" text="yes" />
 
     @auth

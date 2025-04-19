@@ -1,5 +1,7 @@
 <x-layout>
 
+    <x-image-background />
+
     <x-role :role=$role list="edit" />
 
     @auth
@@ -9,8 +11,8 @@
     @endauth
 
     <x-projects-section :projects="$role->linkedByProjects" 
-        title="As a {{ $role->name }}, I have worked on the following projects:" 
-        clic="Click on a project to explore the roles I took on and the skills I developed throughout the journey." 
+        title="While serving as {{ $role->name }}, I contributed to the following projects" 
+        clic="Discover the roles I embraced and the skills I sharpened by clicking on each project." 
         empty="So far, I haven't held the role of {{ $role->name }} in any project" />
 
     @auth

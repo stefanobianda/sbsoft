@@ -48,7 +48,7 @@ class ExperienceController extends Controller
             "name"=> "required|string|max:64",
             "description"=> "string|max:255",
             "company"=> "string|max:64",
-            'image' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:512',
+            'image' => 'nullable|image|mimes:jpeg,jpg,png,gif,webp|max:512',
         ]);
 
         // Check for image
@@ -73,7 +73,7 @@ class ExperienceController extends Controller
             "name"=> "required|string|max:64",
             "description"=> "nullable|string|max:255",
             "company"=> "nullable|string|max:64",
-            'image' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:512',
+            'image' => 'nullable|image|mimes:jpeg,jpg,png,gif,webp|max:512',
         ]);
 
         // Check for image

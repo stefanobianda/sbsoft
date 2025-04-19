@@ -54,7 +54,7 @@ class ProjectController extends Controller
             "description"=> "nullable|string|max:100",
             "company"=> "nullable|string|max:30",
             "experience_id" => "required",
-            'image' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:512',
+            'image' => 'nullable|image|mimes:jpeg,jpg,png,gif,webp|max:512',
         ]);
 
         // Check for image
@@ -82,7 +82,7 @@ class ProjectController extends Controller
             "description"=> "nullable|string|max:100",
             "company"=> "nullable|string|max:30",
             "experience_id" => "required",
-            'image' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:512',
+            'image' => 'nullable|image|mimes:jpeg,jpg,png,gif,webp|max:512',
         ]);
 
         // Check for image

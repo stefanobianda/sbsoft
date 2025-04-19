@@ -8,7 +8,7 @@
 
             <x-inputs.text id="name" name="name" label="Experience name" placeholder="Experience name"/>
 
-            <x-inputs.text id="description" name="description" label="Experience Description" placeholder="Description of the experience"/>
+            <x-inputs.textarea id="description" name="description" label="Experience Description" placeholder="Description of the experience"/>
 
             <x-inputs.text id="company" name="company" label="Company" placeholder="Name of the company"/>
 

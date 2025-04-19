@@ -1,5 +1,5 @@
 @props(['text'])
 
-<div class="bg-blue-600 p-4 my-4 gap-4 m-4 rounded-lg text-white">
+<div class="bg-blue-600 text-2xl p-6 my-4 text-white text-center">
     <h2>{{ $text }}</h2>
 </div>
