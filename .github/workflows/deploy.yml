@@ -37,7 +37,7 @@ jobs:
           script: |
             cd sites/sbsoft
             git pull origin main
-            php artisan migrate
+            /usr/bin/php artisan migrate
             echo "Deploy completato con successo!"
 
       - name: Slack Notification
