@@ -1,6 +1,6 @@
 @props(['project', 'background' => null, 'text' => null])
 
-<div class="{{ $background }} items-center rounded-lg flex flex-col justify-center text-left p-4 mb-4">
+<div class="{{ $background }} items-center rounded-lg flex flex-col justify-center text-left p-4 mb-4 transform transition-transform duration-200 ease-in-out hover:scale-105 shadow-md hover:shadow-lg">
     <a href="{{route('projects.show', $project->id)}}">
         <h1 class="text-3xl font-bold mb-4">{{$project->name}}</h1>
         <div class="flex justify-center mb-4">

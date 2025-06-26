@@ -14,6 +14,19 @@ export default {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+            keyframes: {
+                'zoom-pan': {
+                    '0%': {
+                        transform: 'scale(1) translateY(0%)',
+                    },
+                    '100%': {
+                        transform: 'scale(1.5) translateY(0%)',
+                    },
+                },
+            },
+            animation: {
+                'zoom-pan': 'zoom-pan 10s ease-in-out infinite alternate',
+            },
         },
     },
     plugins: [
